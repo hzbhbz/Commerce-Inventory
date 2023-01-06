@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.digital.sql.mapper.InventoryMapper">
+
+	<select id="getInventory"
+		resultType="com.digital.sql.vo.InventoryVO">
+		select i.productid, i.quantity
+		from inventory i join product p on i.productid=p.productid
+		where p.productname = #{productName}
+	</select>
+	
+	<select id="getInventoryById"
+		resultType="com.digital.sql.vo.InventoryVO">
+		select i.productid, i.quantity
+		from inventory i join product p on i.productid=p.productid
+		where p.productid = #{productId}
+	</select>
+
+	<insert id="setInventory"
+		parameterType="com.digital.sql.vo.InventoryVO">
+		insert into inventory(productid, quantity)
+		values(#{productId}, #{quantity})
+	</insert>
+
+	<update id="updateInventory"
+		parameterType="com.digital.sql.vo.InventoryVO">
+		update inventory 
+		set quantity = #{quantity} 
+		where productid = #{productId}
+	</update>
+
+</mapper>
+	
