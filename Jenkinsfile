@@ -46,7 +46,7 @@ pipeline {
       steps {
         script {
           echo "Deploy App START"
-          sh "/usr/local/bin/kubectl --kubeconfig=/home/jenkins/acloud-client.conf apply -f inventory_deployment_v1.yaml"
+          sh "/usr/local/bin/kubectl --kubeconfig=/home/jenkins/acloud-client.conf apply -f inventory_deployment_v2.yaml"
           sh "/usr/local/bin/kubectl --kubeconfig=/home/jenkins/acloud-client.conf set image deployments/commerce-inventory inventory-container=192.168.100.12/bb-edu/commerce-inventory:$BUILD_NUMBER -n bb-edu"
           echo "Deploy App END"
         }
